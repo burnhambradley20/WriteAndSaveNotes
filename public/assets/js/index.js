@@ -13,7 +13,7 @@ if (window.location.pathname === '/notes') {
 }
 
 // Show an element
-const show = (elem) => {
+const show = (elem) => { 
   elem.style.display = 'inline';
 };
 
@@ -23,7 +23,8 @@ const hide = (elem) => {
 };
 
 // activeNote is used to keep track of the note in the textarea
-let activeNote = {};
+let activeNote = { 
+};
 
 const getNotes = () =>
   fetch('/api/notes', {
