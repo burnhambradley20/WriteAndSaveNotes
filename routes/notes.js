@@ -2,7 +2,6 @@ const notes = require('express').Router();
 const fs = require('fs');
 const util = require('util');
 const { v4: uuidv4 } = require('uuid');
-uuidv4();
 const readFromFile = util.promisify(fs.readFile);
 const writeToFile = (destination, content) =>
   fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
@@ -25,14 +24,13 @@ notes.get('/notes', (req, res) => {
   });
 
 notes.post('/notes', (req, res) => {
-
     const { title, text} = req.body;
 
     if (req.body) {
         const newSave = {
         title,
         text,
-        noteId: uuid(),
+        noteId: uuidv4(),
         };
 
         readAndAppend(newSave, './db/db.json');
